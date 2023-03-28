@@ -25,10 +25,12 @@ func main() {
 	log.Debug("This is a debug message")
 	log.Info("This is a info message", log.Int32("int_key", 10))
 	log.Warnf("This is a formatted %s message", "WARN")
-	log.Errorw("Message printed with Errorw", "X-Request-ID", "fbf54504-64da-4088-9b86-67824a7fb508")
+	log.Errorw("Message printed with Errorw", 
+		"X-Request-ID", "fbf54504-64da-4088-9b86-67824a7fb508")
 
 	// Context使用
-	ctx := context.WithValue(context.Background(), "requestID", "2a7b9f24-4ace-4b2a-9464-69238b45b953")
+	ctx := context.WithValue(context.Background(), 
+		"requestID", "2a7b9f24-4ace-4b2a-9464-69238b45b953")
 	log.L(ctx).Infof("fetch datasource success")
 	log.L(ctx).Errorf("fetch datasource failed")
 
@@ -42,7 +44,8 @@ func main() {
 
 	// Level使用
 	log.V(log.InfoLevel).Info("This is a V level message")
-	log.V(log.ErrorLevel).Infow("This is a V level message with fields", "X-Request-ID", "7a7b9f24-4cae-4b2a-9464-69088b45b904")
+	log.V(log.ErrorLevel).Infow("This is a V level message with fields", 
+		"X-Request-ID", "7a7b9f24-4cae-4b2a-9464-69088b45b904")
 	log.V(0).Info("This is a V level message")
 	log.V(1).Info("This is a V level message")
 }
